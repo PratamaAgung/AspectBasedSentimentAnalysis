@@ -1,0 +1,5 @@
+## Dependencies to run sentiment analysis
+
+1. pujangga.
+https://github.com/panggi/pujangga
+Running on scala and using lightbend activator (https://gist.github.com/patarkf/ab2c976b6f89edf90f63)
