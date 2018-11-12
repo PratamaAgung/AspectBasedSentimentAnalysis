@@ -34,6 +34,7 @@
             <div id="pengiriman-text" class="result-text result pred-net">Pengiriman</div>
             <div id="packaging-text" class="result-text result pred-net">Packaging</div>
         </div>
+        <div id="processing-indicator" style="text-align: center; margin-top: 50px; color: gray; visibility: hidden;">Processing</div>
     </div>
 
     <script>
@@ -45,6 +46,8 @@
         }
 
         async function predict(query) {
+            processingIndicator = document.getElementById('processing-indicator')
+            processingIndicator.style.visibility = 'visible'
             const result = await fetch('/predict/?s=' + encodeURIComponent(query)).then(r => r.json())
             const aspects = ['produk', 'pengiriman', 'packaging']
             for (aspect of aspects) {
@@ -54,6 +57,7 @@
                     setClass(aspect, 0)
                 }
             }
+            processingIndicator.style.visibility = 'hidden'
         }
 
         window.onload = function(ev) {
